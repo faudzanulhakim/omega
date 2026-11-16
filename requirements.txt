@@ -1,0 +1,7 @@
+# OMEGA runtime requirements.
+# Python >= 3.11 (stdlib-only for most modules).
+PyYAML>=6.0          # omega/dsl.py custom check loading (required)
+
+# Optional — the suite degrades gracefully when these are absent:
+# playwright>=1.40   # omega/jsrender.py + omega/browser.py (Chromium scan;
+#                     #   install browsers: python3 -m playwright install chromium)

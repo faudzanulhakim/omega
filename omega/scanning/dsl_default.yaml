@@ -1,0 +1,60 @@
+# omega/dsl_default.yaml — example user-writable checks (no code needed).
+#
+# Schema per check:
+#   id        : short slug [a-z0-9_-]
+#   title     : finding title when the check matches
+#   severity  : info | low | medium | high
+#   requests  : list of {method: GET|HEAD|OPTIONS, path: /..., headers: {}}
+#               each with expect:
+#                 status          : exact int
+#                 body_contains   : list of substrings (ALL must match)
+#                 body_regex      : list of regexes (ALL must match)
+#                 header_contains : {Header: substring}
+#                 diff_vs_baseline: true  -> body must differ from the
+#                                            baseline fetch of the same path
+#                                            without custom headers
+# Verdict: confirmed = ALL expects matched AND diff_vs_baseline satisfied;
+#          candidate = ANY expect matched; nothing = no finding.
+checks:
+  - id: security-txt
+    title: "security.txt present (RFC 9116 contact disclosure)"
+    severity: info
+    requests:
+      - method: GET
+        path: /.well-known/security.txt
+        expect:
+          status: 200
+          body_contains: ["Contact:"]
+
+  - id: robots-sensitive
+    title: "robots.txt discloses sensitive paths (Disallow entries)"
+    severity: info
+    requests:
+      - method: GET
+        path: /robots.txt
+        expect:
+          status: 200
+          body_regex: ["(?i)^Disallow: */(admin|private|backup)"]
+
+  - id: admin-title
+    title: "admin-style page title reachable at common paths"
+    severity: low
+    requests:
+      - method: GET
+        path: /admin/
+        expect:
+          status: 200
+          body_regex: ["(?i)<title>[^<]*(admin|dashboard|login)"]
+
+  - id: custom-header-echo
+    title: "server echoes a custom header back (reflection signal)"
+    severity: low
+    requests:
+      - method: GET
+        path: /
+        headers:
+          X-Omega-Dsl: "omega-echo-marker"
+        expect:
+          header_contains:
+            X-Omega-Dsl: "omega-echo-marker"
+          diff_vs_baseline: true
