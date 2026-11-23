@@ -1,0 +1,29 @@
+{
+  "target_notes": "OWASP Juice Shop (https://juice-shop.herokuapp.com). check_hint tokens are matched case-insensitively against each finding's title/location/param/evidence; any token hit counts as a detected signal for that class. JS SPA: no XXE class.",
+  "classes": [
+    {"id": "EXT-01", "category": "broken_auth", "expected_severity": "HIGH", "check_hint": ["auth", "login", "brute", "password", "credential"]},
+    {"id": "EXT-02", "category": "sqli", "expected_severity": "CRITICAL", "check_hint": ["sqli", "sql injection", "sql error", "sqlite"]},
+    {"id": "EXT-03", "category": "xss_reflected", "expected_severity": "HIGH", "check_hint": ["xss", "reflected", "cross-site scripting", "script"]},
+    {"id": "EXT-04", "category": "xss_stored", "expected_severity": "HIGH", "check_hint": ["stored xss", "persistent", "stored"]},
+    {"id": "EXT-05", "category": "xss_dom", "expected_severity": "MEDIUM", "check_hint": ["dom", "dom-based", "client-side"]},
+    {"id": "EXT-06", "category": "idor", "expected_severity": "HIGH", "check_hint": ["idor", "insecure direct object", "access control", "authorization"]},
+    {"id": "EXT-07", "category": "path_traversal", "expected_severity": "HIGH", "check_hint": ["traversal", "lfi", "../", "path"]},
+    {"id": "EXT-08", "category": "ssrf", "expected_severity": "HIGH", "check_hint": ["ssrf", "server-side request", "bssrf"]},
+    {"id": "EXT-09", "category": "jwt_forgery", "expected_severity": "HIGH", "check_hint": ["jwt", "alg=none", "alg none", "token forge", "admin section"]},
+    {"id": "EXT-10", "category": "sensitive_data_exposure", "expected_severity": "HIGH", "check_hint": ["exposure", "sensitive", "secret", "api key", "leak", "confidential"]},
+    {"id": "EXT-11", "category": "directory_listing", "expected_severity": "LOW", "check_hint": ["directory listing", "index of", "listing"]},
+    {"id": "EXT-12", "category": "missing_security_headers", "expected_severity": "MEDIUM", "check_hint": ["header", "csp", "hsts", "x-frame", "x-content-type"]},
+    {"id": "EXT-13", "category": "open_redirect", "expected_severity": "MEDIUM", "check_hint": ["open redirect", "redirect"]},
+    {"id": "EXT-14", "category": "insecure_cookie", "expected_severity": "MEDIUM", "check_hint": ["cookie", "samesite", "httponly", "secure flag"]},
+    {"id": "EXT-15", "category": "cors_misconfig", "expected_severity": "MEDIUM", "check_hint": ["cors", "access-control-allow-origin"]},
+    {"id": "EXT-16", "category": "command_injection", "expected_severity": "CRITICAL", "check_hint": ["command injection", "cmdi", "rce", "os command"]},
+    {"id": "EXT-17", "category": "insecure_deserialization", "expected_severity": "CRITICAL", "check_hint": ["deserialization", "deserial", "deserialize"]},
+    {"id": "EXT-18", "category": "known_cve_component", "expected_severity": "HIGH", "check_hint": ["cve", "outdated", "version disclosure", "component"]},
+    {"id": "EXT-19", "category": "information_disclosure_debug", "expected_severity": "LOW", "check_hint": ["debug", "stack trace", "error message", "stacktrace", "stack-trace"]},
+    {"id": "EXT-20", "category": "exposed_admin_interface", "expected_severity": "HIGH", "check_hint": ["admin", "administration", "admin panel", "/administration"]},
+    {"id": "EXT-21", "category": "graphql_introspection", "expected_severity": "LOW", "check_hint": ["graphql", "introspection"]},
+    {"id": "EXT-22", "category": "sensitive_file_exposure", "expected_severity": "MEDIUM", "check_hint": [".env", "backup", ".git", "ftp", "supplement"]},
+    {"id": "EXT-23", "category": "bruteforce_rate_limit", "expected_severity": "MEDIUM", "check_hint": ["rate limit", "rate-limit", "brute force", "captcha"]},
+    {"id": "EXT-24", "category": "prototype_pollution", "expected_severity": "HIGH", "check_hint": ["prototype pollution", "__proto__"]}
+  ]
+}

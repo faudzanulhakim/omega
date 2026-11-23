@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.hypothesis/
+.venv/
+
+# Local data / secrets — never commit
+.env
+secrets.key
+toolkit.db*
+reports/
+uploads_apk/
+
+# Build artifacts
+*.zip

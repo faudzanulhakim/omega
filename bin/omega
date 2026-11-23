@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# OMEGA CLI shim — exec python3 -m omega.core.cli with the repo dir on PYTHONPATH.
+# cd to the repo first: a caller cwd containing another `omega` directory
+# (e.g. the Hermes plugin folder) would shadow the real package.
+OMEGA_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export PYTHONPATH="${OMEGA_DIR}${PYTHONPATH:+:$PYTHONPATH}"
+cd "$OMEGA_DIR" || exit 3
+exec python3 -m omega.core.cli "$@"

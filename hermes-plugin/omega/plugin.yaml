@@ -1,0 +1,19 @@
+name: omega
+version: 1.0.0
+description: 'OMEGA — autonomous red-team operator: brutal in analysis, honest in evidence, never destructive. One-shot assaults, scans, AI-claim validation gate, adaptive follow-up probes, chain recommender, sessions, consultant-grade reports (5 formats). Authorization enforced per-call.'
+author: 'faudzanulhakim + OMEGA'
+provides_tools:
+  - omega_scan
+  - omega_assault
+  - omega_validate
+  - omega_followup
+  - omega_chains
+  - omega_sessions
+  - omega_report
+  - omega_stats
+  - omega_autodeep
+  - omega_offense
+  - omega_portfolio
+  - omega_evidence
+  - omega_selftest
+  - omega_playbook
